@@ -11,6 +11,8 @@ def callback(ch, method, properties, body):
     print(" [x] Received %r" % body)
 
 
+# auto_ack=True manual ack are turned off
+# to send a proper ack: ch.basic_ack(delivery_tag = method.delivery_tag) on callback function
 channel.basic_consume(
     queue='hello', on_message_callback=callback, auto_ack=True)
 
